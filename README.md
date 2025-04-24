@@ -17,6 +17,8 @@ essay scoring
 - [NCME 2025 Paper](manuscript/NCME_daacs_writing_nlp.pdf)
 - [NCME 2025 Slides](slides/DAACS-Writing.pdf)
 - [Poster](poster/Writing-NLP-Poster.pdf)
+- [Github repository](https://github.com/DAACS/DAACS-NLP) containing the
+  Python code to run all the models.
 
 There is a [Shiny Application](shiny/app.R) that allows interaction with
 the results. This can be run using the following command:
