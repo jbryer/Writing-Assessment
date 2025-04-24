@@ -318,13 +318,13 @@ class: inverse, middle, hide-logo, font100
 
 
 ```{r, echo=FALSE, fig.width=5, fig.height=5, out.extra='style="float:right; padding:10px"'}
-qrcode::qr_code('https://github.com/DAACS/Writing-Assessment') |> plot(col = c('#005DAC', 'white'))
+qrcode::qr_code('https://github.com/jbryer/Writing-Assessment') |> plot(col = c('#005DAC', 'white'))
 ```
 
 # Thank You!
 
 [`r icons::fontawesome("paper-plane")` jason.bryer@cuny.edu](mailto:jason.bryer@cuny.edu)  
-[`r icons::fontawesome("github")` @DAACS](https://github.com/DAACS/Writing-Assessment)  
+[`r icons::fontawesome("github")` @DAACS](https://github.com/jbryer/Writing-Assessment)  
 [`r icons::fontawesome('link')` www.daacs.net](https://daacs.net)  
 
 <br/><br/><br/><br/><br/><br/>

@@ -12,10 +12,11 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 
-# pagedown::chrome_print('slides/DAACS-Writing.html',
-# 					   'slides/DAACS-Writing.pdf',
-# 					   timeout = 120)
-
+if(FALSE) {
+	pagedown::chrome_print('slides/DAACS-Writing.html',
+						   'slides/DAACS-Writing.pdf',
+						   timeout = 120)
+}
 ```
 
 ## DAACS Writing Assessment
