@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Automated Scoring of Student Essays for Diagnostic Assessments</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Jason M. Bryer, Angela L. Lui, Anthony Fraser, &amp; Julia Ferris" />
+    <meta name="date" content="2025-04-24" />
+    <script src="libs/header-attrs-2.29/header-attrs.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/mtheme_max.css" type="text/css" />
+    <link rel="stylesheet" href="assets/fonts_mtheme_max.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+class: center, middle, inverse, title-slide
+
+# Automated Scoring of Student Essays for Diagnostic Assessments
+## Statistics &amp; Probability for Data Analytics
+### Jason M. Bryer, Angela L. Lui, Anthony Fraser, &amp; Julia Ferris
+### April 24, 2025
+
+
+---
+# Introduction
+
+* In the last few years there have been significant advances in the analysis of text data, specifically the introduction of Large Language Models (LLMs, e.g. OpenAI, Anthropic, etc.).
+
+* The development of LLMs has been largely driven by *transformer* models ([Vaswani et all, 2017](https://proceedings.neurips.cc/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf)).
+
+* The Diagnostic Assessment and Achievement of College Skills has been using [LightSide](https://ankara.lti.cs.cmu.edu/side/) (Mayfield, Adamson &amp; Rosé, 2015) to score essays. 
+
+### Research Question
+
+Do the more modern tokenizers perform better than the traditional rule-based tokenizers?
+
+
+---
+# What is DAACS?
+
+* A suite of technological and social support to optimize student learning.
+
+* No-stakes, diagnostic (formative?) assessments in:
+	* Self-Regulated Learning
+	* Writing
+	* Reading Comprehension
+	* Mathematics
+
+* Provides students with immediate feedback about strengths and weaknesses along with links to open educational resources (OER).
+
+* Coaches, Academic Advisors, and Instructors can utilize student results to provide more targeted supports.
+
+* Data is used in predictive analytic efforts to increase the accuracy of identifying "at-risk" students.
+
+---
+# DAACS Dashboard
+
+&lt;img src="figures/daacs_dashboard.png" width="3733" style="display: block; margin: auto;" /&gt;
+
+---
+# DAACS Self-Regulated Learning Results
+
+&lt;img src="figures/daacs_srl_results.png" width="3733" style="display: block; margin: auto;" /&gt;
+
+---
+# DAACS Writing Prompt
+
+&lt;img src="figures/daacs_writing_prompt.png" width="3733" style="display: block; margin: auto;" /&gt;
+
+---
+# DAACS Writing Results
+
+&lt;img src="figures/daacs_writing_results.png" width="3733" style="display: block; margin: auto;" /&gt;
+
+---
+# DAACS Writing Feedback Rubric
+
+&lt;img src="figures/daacs_writing_rubric.png" width="3733" style="display: block; margin: auto;" /&gt;
+
+
+
+---
+class: font70
+# Rubric (cont.)
+
+
+|Criteria     |SubCriteria |Mastering                                                                                                                                                        |Emerging                                                                                                                                                                                                                                                            |Developing                                                                                                                                                                                                                                                                  |
+|:------------|:-----------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|content      |summary     |The essay uses relevant survey results and feedback to provide a detailed summary of the student's strengths and weaknesses in terms of self-regulated learning. |The essay refers to survey results and feedback in the summary of strengths and weaknesses related to self-regulated learning. The summary is a bit thin though: Additional, relevant details and examples would have strengthened it.                              |The summary of strengths and weaknesses in SRL is under-developed. It might need more detail about the results and feedback, and/or should address both strengths and weaknesses, rather than one or the other.                                                             |
+|content      |suggestions |The discussion of suggestions for improvement in SRL are logically and explicitly related to the survey results and feedback, and developed in sufficient depth. |The essay includes a clear discussion of improvements to be made to SRL, but the connections to the survey results and feedback are not always explicit and clear.                                                                                                  |The discussion of possible improvements in SRL is vague and/or disconnected from the strengths and weaknesses discussed in the summary. It might have been stronger if the suggestions for improvement were more specific, and explicitly tied to the results and feedback. |
+|organization |structure   |The essay is well-organized, with an order and structure that present the discussion in a clear, logical manner.                                                 |The essay has a basic structure but does not offer a clear, overall organization that enables a reader to understand the progression of one idea to another. It might have been strengthened by the inclusion of an introduction, topic sentences, conclusion, etc. |The essay is not carefully structured. It might move almost randomly from one point to the next. It could have been strengthened by the use of an introduction, topic sentences, a conclusion, and other organizational features.                                           |
+
+---
+class: font70
+# Rubric (cont.)
+
+
+|Criteria     |SubCriteria |Mastering                                                                                                                                                                                                                                                                                                                                                                                                                                        |Emerging                                                                                                                                                                                                                                                                                                                                                                                                              |Developing                                                                                                                                                                                                                                                                                                                                                                                |
+|:------------|:-----------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|organization |transitions |Transitions between paragraphs are appropriate and effective, and strengthen the progression of the essay.                                                                                                                                                                                                                                                                                                                                       |Transitions between paragraphs include language that signals a shift from one main idea to the next, as needed (e.g. "In terms of monitoring what I do..." "In the mindset category . . ."). The use of additional transitions (e.g. similarly, in addition, next, as a result) would have helped link the paragraphs and strengthen the overall organization of the essay.                                           |Transitions between paragraphs are missing or ineffective. As a result, the paragraphs abruptly shift from one idea to the next. Transitions (e.g. similarly, in addition, next, as a result) would have helped link the paragraphs and strengthen the overall organization of the essay.                                                                                                 |
+|paragraphs   |ideas       |Paragraphs are consistently and clearly focused on a main idea or point.                                                                                                                                                                                                                                                                                                                                                                         |In general, each paragraph has a clear focus. Some might have been strengthened by a topic sentence that establishes the focus, but the main ideas are apparent.                                                                                                                                                                                                                                                      |Most or all paragraphs lack a clear focus on a main point or topic, perhaps because too many ideas are packed into one paragraph.  Each topic should be fully developed in separate paragraphs. Each paragraph should include a statement of the main point, and every sentence in the paragraph should relate to that point.                                                             |
+|paragraphs   |cohesion    |Within paragraphs, the individual sentences are seamlessly linked together; the reader can see the relationship between the ideas or information in one sentence and those in another sentence. The writing explicitly links sentences and ideas using adverbs (e.g., similarly, also, therefore), relative pronouns (e.g., who, that, which), conjunctions (e.g., and, or, while, whereas), and/or the repetition of key words, as appropriate. |The ideas or information in each sentence within a paragraph are loosely linked together. The connections between sentences would have been clarified by additional or better choices of linking words and phrases, such as adverbs (e.g., similarly, also, therefore), relative pronouns (e.g., who, that, which), conjunctions (e.g., and, or, while, whereas), and/or the repetition of key words, as appropriate. |Because the ideas or information in each sentence within a paragraph are not linked together, it is hard for a reader to see the relationship between  sentences. Ideas could be connected with adverbs (e.g., similarly, also, therefore), relative pronouns (e.g., who, that, which), conjunctions (e.g., and, or, while, whereas), and/or the repetition of key words, as appropriate. |
+
+---
+class: font70
+# Rubric (cont.)
+
+
+|Criteria    |SubCriteria |Mastering                                                                                                                                          |Emerging                                                                                                                                                                       |Developing                                                                                                                                                           |
+|:-----------|:-----------|:--------------------------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|sentences   |correct     |Sentences are correct: no run-ons, fragments, or errors in subject-verb agreement.                                                                 |The sentences are generally correct. Minor issues with grammar, such as errors in subject-verb agreement (e.g., "the survey results suggests…") do not interfere with meaning. |Problems with grammar make the essay hard to read and understand. More attention to the parts of speech (e.g., nouns, pronouns, verbs, adjectives, etc.) was needed. |
+|sentences   |complexity  |Consistent and appropriate use of a variety of sentence structures, including some sophisticated, complex sentence structures and syntactic forms. |Complex syntactic structures are present but not consistently used; sentence structure is varied but not often sophisticated.                                                  |The sentences lack syntactic complexity and vary little, if at all, in structure. The sentences are generally simple in structure (subject-verb-object).             |
+|conventions |conventions |Spelling, punctuation, and capitalization are correct to the extent that almost no editing is needed.                                              |Spelling, punctuation, and capitalization are correct to the extent that only light editing is needed.                                                                         |Careful editing was needed to correct frequent, distracting errors in spelling, punctuation, and/or capitalization.                                                  |
+
+---
+# Data Source
+
+.pull-left[
+
+1,065 essays were collected from Western Governors University and the University at Albany, 592 of which were double scored. For WGU, the first 893 essays that were collected as part of a larger randomized control trial were included. The remaining essays were randomly selected from the University at Albany.
+
+There were two scoring events with a total of 15 raters supervised by two subject matter experts.
+
+]
+.pull-right[
+
+|Criteria                        |  IRR|
+|:-------------------------------|----:|
+|Content Summary                 | 0.58|
+|Content Suggestions             | 0.58|
+|Organization Structure          | 0.63|
+|Organization Transition         | 0.58|
+|Paragraphs Focus on a Main Idea | 0.62|
+|Paragraphs Cohesion             | 0.60|
+|Sentences Correct               | 0.55|
+|Sentences Complex               | 0.59|
+|Conventions                     | 0.55|
+]
+
+---
+# Workflow for automated machine scoring
+
+
+&lt;img src="figures/process.png" width="1369" style="display: block; margin: auto;" /&gt;
+
+&lt;br/&gt;&lt;br/&gt;
+
+For this study predictive models were trained on 75% of the observations. Prediction accuracies are calculated from the test data.
+
+For essays that were double scored, the conferral score was used. Otherwise the single rater score was used.
+
+---
+# Tokenization
+
+Tokenization is the process of coverting text into vectors or matrices.
+
+&lt;img src="figures/tokenization.png" width="691" style="display: block; margin: auto;" /&gt;
+
+[Vaswani et al](https://proceedings.neurips.cc/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf) (2017) introduced the *transformer* model approach to tokenization. Unlike traditional rule based tokenization, transformer models are trained on a large corpus of text in order to not only find the basic word structures, but to also to infer context by finding nearby reoccurring tokens.
+
+---
+# Tokenizers and Predictive Models
+
+.pull-left[
+
+
+|Tokenization Algorithm |Reference                               |
+|:----------------------|:---------------------------------------|
+|Bert                   |Devlin et al. (2018)                    |
+|Distilbert             |Sanh, Debut, Chaumond, and Wolf (2019)  |
+|Word 2 Vec             |Mikolov, Chen, Corrado, and Dean (2013) |
+|Scikit Native Vectors  |Arsenovic et al. (2022)                 |
+|Facebook Vectors       |Bojanowski et al. (2016)                |
+|Scikit Vectors         |Arsenovic et al. (2022)                 |
+
+]
+.pull-right[
+
+
+|Prediction Model                     |Reference                 |
+|:------------------------------------|:-------------------------|
+|k-nearest neighbors                  |Fix &amp; Hodges (1951)       |
+|Linear Support Vector Classification |Ratna et al (2019)        |
+|C-Support Vector Classification      |Novakovic et al (2011)    |
+|Gradient Boosting                    |Breiman (1997)            |
+|XGBoost                              |Shang, Men, and Du (2023) |
+|Bagging                              |Islam et al (2022)        |
+|Random Forest                        |Breimann (2001)           |
+|AdaBoost                             |Sevinç (2022)             |
+|Logistic Regression                  |Cramer (2002)             |
+
+]
+
+---
+class: font80
+# Version 1: LightSide Features
+
+
+
+|Feature             |Summary |Suggestions |Structure |Transition |Focus |Cohesion |Correct |Complex |Conventions |
+|:-------------------|:-------|:-----------|:---------|:----------|:-----|:--------|:-------|:-------|:-----------|
+|Model               |Logit   |Logit       |Bayes     |Bayes      |Logit |Logit    |Logit   |Bayes   |Logit       |
+|Unigrams            |X       |X           |X         |X          |X     |X        |X       |X       |X           |
+|Bigrams             |        |            |          |           |X     |         |X       |X       |            |
+|Trigrams            |        |            |          |           |      |         |X       |X       |            |
+|POS Bigrams         |        |            |          |           |      |         |X       |X       |X           |
+|POS Trigrams        |        |            |          |           |      |         |X       |X       |X           |
+|Word/POS Pairs      |X       |X           |X         |X          |X     |X        |X       |X       |X           |
+|Line Length         |        |X           |X         |X          |X     |X        |X       |X       |X           |
+|Include Punctuation |X       |X           |X         |X          |X     |X        |X       |X       |X           |
+|Step N-Grams        |        |            |          |X          |      |         |        |        |            |
+|Character N-Grams   |        |            |X         |X          |X     |X        |        |X       |            |
+|Stretchy Patterns   |        |            |X         |X          |      |X        |X       |X       |X           |
+
+[LightSide](https://ankara.lti.cs.cmu.edu/side/) (Mayfield, Adamson &amp; Rosé, 2015)
+
+---
+# Version 1: IRR and LightSide Accuracy
+
+
+
+|Criteria                         | Human-Human| Human-LightSide|
+|:--------------------------------|-----------:|---------------:|
+|Conntent Suggestions             |      0.6089|          0.7226|
+|Content Summary                  |      0.5578|          0.6962|
+|Conventions                      |      0.5533|          0.6316|
+|Organization Structure           |      0.6289|          0.7422|
+|Organization Transitions         |      0.5711|          0.4717|
+|Paragraphs Cohesion              |      0.6156|          0.7273|
+|Paragraphs Focus on a Main Ideas |      0.5978|          0.7345|
+|Sentences Complexity             |      0.5600|          0.6842|
+|Sentences Correct                |      0.5633|          0.5573|
+
+
+---
+# Results
+
+&lt;img src="DAACS-Writing_files/figure-html/results-plot-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+# Results: Top performing models by criteria
+
+
+|Criteria                        |Toeknizer          |Predictive Model | Human-LLM| Human-Human| Human-LightSide| Improvement|
+|:-------------------------------|:------------------|:----------------|---------:|-----------:|---------------:|-----------:|
+|Content Suggestions             |scikit_vectors     |LinearSVC        |      0.71|        0.61|            0.72|       -0.01|
+|Content Summary                 |bert_vectors       |RandomForest     |      0.72|        0.56|            0.70|        0.02|
+|Conventions                     |bert_vectors       |GradientBoosting |      0.71|        0.55|            0.63|        0.08|
+|Organization Structure          |bert_vectors       |RandomForest     |      0.77|        0.63|            0.74|        0.03|
+|Organization Transition         |bert_vectors       |RandomForest     |      0.66|        0.57|            0.47|        0.19|
+|Paragraphs Cohesion             |distilbert_vectors |RandomForest     |      0.75|        0.62|            0.73|        0.03|
+|Paragraphs Focus on a Main Idea |distilbert_vectors |RandomForest     |      0.73|        0.60|            0.73|       -0.01|
+|Sentences Complex               |distilbert_vectors |GradientBoosting |      0.73|        0.56|            0.68|        0.04|
+|Sentences Correct               |bert_vectors       |RandomForest     |      0.70|        0.56|            0.56|        0.15|
+
+
+---
+# Discussion
+
+* In general, the new generation of tokenizers are an improvement over the rule based tokenizers.
+
+* The more modern tokenizers (e.g. BERT, SciKit Vectors, word2vec, etc.) all perform equally well. 
+
+* The choice of predictive model seems to have a bigger impact on model accuracy. This is consistent with prior research (see e.g. [Fernández-Delgado, Cernados, Barro, &amp; Amorin, 2014](https://jmlr.org/papers/volume15/delgado14a/delgado14a.pdf)).
+
+* These new models will soon be integrated into the DAACS system.
+
+
+---
+class: inverse, middle, hide-logo, font100
+
+
+&lt;img src="DAACS-Writing_files/figure-html/unnamed-chunk-15-1.png" style="float:right; padding:10px" /&gt;
+
+# Thank You!
+
+[&lt;svg viewBox="0 0 512 512" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M440 6.5L24 246.4c-34.4 19.9-31.1 70.8 5.7 85.9L144 379.6V464c0 46.4 59.2 65.5 86.6 28.6l43.8-59.1 111.9 46.2c5.9 2.4 12.1 3.6 18.3 3.6 8.2 0 16.3-2.1 23.6-6.2 12.8-7.2 21.6-20 23.9-34.5l59.4-387.2c6.1-40.1-36.9-68.8-71.5-48.9zM192 464v-64.6l36.6 15.1L192 464zm212.6-28.7l-153.8-63.5L391 169.5c10.7-15.5-9.5-33.5-23.7-21.2L155.8 332.6 48 288 464 48l-59.4 387.3z"&gt;&lt;/path&gt;&lt;/svg&gt; jason.bryer@cuny.edu](mailto:jason.bryer@cuny.edu)  
+[&lt;svg viewBox="0 0 496 512" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"&gt;&lt;/path&gt;&lt;/svg&gt; @DAACS](https://github.com/DAACS/Writing-Assessment)  
+[&lt;svg viewBox="0 0 512 512" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"&gt;&lt;/path&gt;&lt;/svg&gt; www.daacs.net](https://daacs.net)  
+
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
+
+.font50[DAACS was developed under grants #P116F150077 and #R305A210269 from the U.S.
+Department of Education. However, the contents do not necessarily represent the policy of the
+U.S. Department of Education, and you should not assume endorsement by the Federal
+Government.]
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+  "highlightStyle": "solarized-light",
+  "highlightLanguage": "R",
+  "highlightLines": true,
+  "countIncrementalSlides": false,
+  "ratio": "16:9",
+  "navigation": {
+    "scroll": false
+  }
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

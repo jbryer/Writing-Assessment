@@ -1,0 +1,36 @@
+---
+output: github_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+
+# pagedown::chrome_print('slides/DAACS-Writing.html',
+# 					   'slides/DAACS-Writing.pdf',
+# 					   timeout = 120)
+
+```
+
+## DAACS Writing Assessment
+
+#### Abstract
+
+Significant advancements in large language models have occurred over the past decade. This study explores how some of the more recent tokenizers compare to traditional n-gram-style tokenization procedures in the context of scoring a diagnostic assessment. Results show improvements, but predictive models might matter more.
+
+**Keywords:** natural language processing, machine learning, automated essay scoring
+
+#### Contents
+
+* [NCME 2025 Paper](manuscript/NCME_daacs_writing_nlp.pdf)
+* [NCME 2025 Slides](slides/DAACS-Writing.pdf)
+* [Poster](poster/Writing-NLP-Poster.pdf)
+* [Shiny Application](shiny/app.R)
+
+*DAACS was developed under grants P116F150077 and R305A210269 from the U.S. Department of Education. However, the contents do not necessarily represent the policy of the U.S. Department of Education, and you should not assume endorsement by the Federal Government.*
